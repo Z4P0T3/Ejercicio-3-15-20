@@ -1,0 +1,19 @@
+% Caso base: lista vacía produce lista vacía
+filtrarmayores([], , []).
+
+% Caso recursivo: incluir elemento si es mayor que N
+filtrar_mayores([Cabeza|Resto], N, [Cabeza|Filtrados]) :-
+    Cabeza > N,
+    filtrar_mayores(Resto, N, Filtrados).
+
+% Caso recursivo: descartar elemento si no es mayor que N
+filtrar_mayores([Cabeza|Resto], N, Filtrados) :-
+    Cabeza =< N,
+    filtrar_mayores(Resto, N, Filtrados).
+
+
+✅ Consulta de prueba:
+prolog
+?- filtrar_mayores([10, 3, 15, 7, 20], 10, Resultado).
+Resultado = [15, 20].
+`
