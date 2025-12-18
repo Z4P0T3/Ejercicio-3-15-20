@@ -1,0 +1,16 @@
+
+El codigo original tenia dos problemas principales uno de sintaxis y otro de diseño
+
+Primero en la primera linea habia una coma y un espacio raro antes de la lista vacia
+Esto causaba un error de sintaxis porque Prolog espera una variable normal donde puso eso que parece una variable pero no es valida
+Lo cambie por un guion bajo que es la variable anonima que se usa cuando el valor no nos importa
+
+El segundo problema era de diseño sin el corte Prolog podia generar soluciones alternativas aunque la lista sea la misma
+Imagina que evalua el numero 10 es mayor que N no entonces pasa a la segunda regla y descarta el 10 pero luego Prolog piensa hey podria intentar de nuevo la primera regla y como no hay corte puede retroceder y generar resultados duplicados o alternativos que no queremos
+El corte le dice a Prolog que si la cabeza es mayor que N entonces esa es la unica opcion para ese elemento no busques mas
+
+Tambien cambie el nombre de una variable para que sea mas claro Filtrados a FiltradaResto asi se entiende que es el resto ya filtrado
+
+Y en la ultima regla puse un guion bajo en la cabeza porque si no es mayor que N no nos interesa su valor solo la descartamos y seguimos procesando el resto de la lista
+
+Basicamente con estos cambios el programa ahora funciona de manera deterministica sin errores de sintaxis y sin generar alternativas innecesarias
