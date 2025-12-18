@@ -1,0 +1,15 @@
+% Caso base: una lista vacía siempre produce una lista vacía.
+% Se usa '_' porque el valor de N no importa cuando la lista se agota.
+filtrar_mayores([], _, []).
+
+% Caso recursivo 1: Si la Cabeza es mayor que N, se incluye en el resultado.
+% El '!' (corte) evita que Prolog intente la siguiente regla si esta ya fue exitosa.
+filtrar_mayores([Cabeza|Resto], N, [Cabeza|FiltradaResto]) :-
+    Cabeza > N, 
+    !, 
+    filtrar_mayores(Resto, N, FiltradaResto).
+
+% Caso recursivo 2: Si la primera regla falló, se asume que Cabeza <= N.
+% Simplemente descartamos la Cabeza y seguimos con el resto.
+filtrar_mayores([_|Resto], N, FiltradaResto) :-
+    filtrar_mayores(Resto, N, FiltradaResto).
